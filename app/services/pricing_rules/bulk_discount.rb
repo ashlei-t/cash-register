@@ -4,7 +4,6 @@ class BulkDiscount
       @threshold = threshold
       @new_price = new_price
     end
-
     def applies_to?(cart_item)
         cart_item.item.code == @code
     end
@@ -19,5 +18,8 @@ class BulkDiscount
           quantity * price
         end
         total
+    end
+    def description(cart_item)
+      "Bulk Discount applied to #{cart_item.item.name}"
     end
 end

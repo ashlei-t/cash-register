@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  attr_reader :applied_rules
+
   def create
     cart = Cart.create
     render json: cart, status: :created
@@ -17,10 +19,14 @@ class CartsController < ApplicationController
       }
     end
 
+    price_calc = CartPriceCalculator.new(cart)
+    total = price_calc.total
+
     render json: {
       cart_id: cart.id,
       items: result,
-      total: CartPriceCalculator.new(cart).total
+      total: total,
+      applied_rules: price_calc.applied_rules
     }
   end
 

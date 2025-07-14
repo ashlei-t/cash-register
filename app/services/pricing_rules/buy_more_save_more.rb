@@ -20,4 +20,7 @@ class BuyMoreSaveMore
         end
         total
     end
+    def description(cart_item)
+      "Buy More Save More applied to #{cart_item.item.name}"
+    end
 end

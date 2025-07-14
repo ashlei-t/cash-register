@@ -24,4 +24,7 @@ class BuyOneGetOneFree
         # return the total
         total
     end
+    def description(cart_item)
+      "Buy One Get One Free applied to #{cart_item.item.name}"
+    end
 end

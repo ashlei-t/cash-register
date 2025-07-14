@@ -3,6 +3,8 @@ require_relative "./pricing_rules/buy_more_save_more"
 require_relative "./pricing_rules/buy_one_get_one_free"
 
 class CartPriceCalculator
+  attr_reader :applied_rules
+
   def initialize(cart)
     @cart = cart
     @rules = [
@@ -13,6 +15,7 @@ class CartPriceCalculator
       # BuyMoreSaveMore expects: code, threshold, discount_ratio
       BuyMoreSaveMore.new("CF1", 3, 2.0/3)
     ]
+    @applied_rules = []
   end
 
   def total
@@ -27,9 +30,10 @@ class CartPriceCalculator
       code = cart_item.item.code
       price = cart_item.item.price
 
-      puts "DEBUG: #{code} x #{quantity} at #{price} each"
+      puts "DEBUG: #{code} x #{quantity} at #{price} each, #{rule}"
 
       item_total = if rule
+        @applied_rules << rule.description(cart_item)
         rule.calculate(cart_item)
       else
         cart_item.quantity.to_i * cart_item.item.price
