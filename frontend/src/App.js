@@ -1,32 +1,19 @@
 import './App.css';
-import axios from 'axios'
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Start from "./components/Start";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 
 function App() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:3001/items')
-      .then(response => {
-        setItems(response.data);
-        console.log(response.data)
-      })
-      .catch(error => {
-        console.error("API Error:", error);
-      });
-  }, []);
 
   return (
-      <div>
-        <h1>Items</h1>
-        <ul>
-          {items.map(item => (
-            <li key={item.id}>
-              {item.name} (${item.price})
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Start />} />
+          <Route path="/cart/:cartId" element={<Cart />} />
+          <Route path="/checkout/:cartId" element={<Checkout />} />
+        </Routes>
+      </Router>
     );
   }
 
