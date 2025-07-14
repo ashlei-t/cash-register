@@ -12,8 +12,8 @@ const Start = () => {
             const newCartId = response.data.id
             setCartId(newCartId);
             console.log("Cart created with ID:", newCartId);
-            
-            navigate(`/cart/${cartId}`);
+
+            navigate(`/cart/${newCartId}`);
         } catch (error) {
             console.error("Failed to start error", error);
         }

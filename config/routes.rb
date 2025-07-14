@@ -5,10 +5,8 @@ Rails.application.routes.draw do
       post :checkout
       delete :clear
     end
+    resources :cart_items, only: [ :create, :update, :destroy ], param: :code
   end
-
-  resources :cart_items, only: [ :create ]
-  patch "/cart_items", to: "cart_items#update"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

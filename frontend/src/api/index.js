@@ -13,22 +13,20 @@ export const fetchCart = (cartId) => axios.get(`${BASE_URL}/carts/${cartId}`);
 
 // add an item to the cart
 export const addItemToCart = (cartId, code, quantity) =>
-    axios.post(`${BASE_URL}/cart_items`, {
-        cart_id: cartId,
-        code,
-        quantity
-    });
+    axios.post(`${BASE_URL}/carts/${cartId}/cart_items`, { code, quantity });
 
-// updates quantity
+// update an item in the cart
 export const updateCartItem = (cartId, code, quantity) =>
-    axios.patch(`${BASE_URL}/cart_items`, {
-    cart_id: cartId,
-    code,
-    quantity
-  });
+    axios.put(`${BASE_URL}/carts/${cartId}/cart_items/${code}`, { quantity });
+
+// removes item completely
+export const removeCartItem = (cartId, code) =>
+    axios.delete(`${BASE_URL}/carts/${cartId}/cart_items/${code}`);
+
 // deletes all items in a cart
 export const clearCart = (cartId) =>
     axios.delete(`${BASE_URL}/carts/${cartId}/clear`);
+
 // completes the checkout
 export const checkoutCart = (cartId) =>
     axios.post(`${BASE_URL}/carts/${cartId}/checkout`);

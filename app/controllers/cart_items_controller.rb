@@ -31,4 +31,18 @@ class CartItemsController < ApplicationController
       render json: cart_item, status: :ok
     end
   end
+
+  def destroy
+    cart = Cart.find(params[:cart_id])
+    item = Item.find_by(code: params[:code])
+
+    cart_item = cart.cart_items.find_by(item_id: item.id)
+
+    if cart_item
+      cart_item.destroy
+      render json: { message: "Item removed from cart" }, status: :ok
+    else
+      render json: { error: "Item not found in cart" }, status: :not_found
+    end
+  end
 end
