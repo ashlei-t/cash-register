@@ -1,6 +1,7 @@
+Item.create(code: "CF1", name: "Coffee", price: 11.23)
 Item.create(code: "GR1", name: "Green Tea", price: 3.11)
 Item.create(code: "SR1", name: "Strawberries", price: 5.00)
-Item.create(code: "CF1", name: "Coffee", price: 11.23)
+
 
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
