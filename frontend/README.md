@@ -4,16 +4,15 @@ This cash register application adds products to a cart and computes the total pr
 
 ## Prerequisites
 
-- Node.js (version 14 or higher)
-- Ruby (version 2.7 or higher)
-- Rails (version 6 or higher)
-- PostgreSQL or SQLite3
+- Node.js: version 14 or higher (tested with 16+)
+- Ruby: version 2.7 or higher
+- Rails: version 6.1 or higher
 
 ## Installation
 
 1. Clone the repository:
    ```bash
-   git clone
+   git clone https://github.com/ashlei-t/cash-register.git
    cd cash-register
    ```
 
@@ -21,16 +20,11 @@ This cash register application adds products to a cart and computes the total pr
    ```bash
    cd backend
    bundle install
+   rails db:create db:migrate db:seed
    ```
+The application includes a seed file that populates the database with sample products and pricing rules.
 
-3. Set up the database:
-   ```bash
-   rails db:create
-   rails db:migrate
-   rails db:seed
-   ```
-
-4. Install frontend dependencies:
+3. Install frontend dependencies:
    ```bash
    cd ../frontend
    npm install
@@ -70,12 +64,6 @@ rspec
 ```
 Runs the test suite for pricing rules and other backend functionality.
 
-## Database Setup
-
-The application includes a seed file that populates the database with sample products and pricing rules. Run the seed command during setup:
-```bash
-rails db:seed
-```
 
 ## Features
 
@@ -86,7 +74,15 @@ rails db:seed
 
 ## API Endpoints
 
-- `GET /api/products` - Retrieve all products
-- `POST /api/cart/add` - Add item to cart
-- `GET /api/cart` - Get current cart
-- `DELETE /api/cart/remove/:id` - Remove item from cart
+## 📡 API Endpoints
+
+| Method | Endpoint                                | Description                                             |
+|--------|------------------------------------------|---------------------------------------------------------|
+| GET    | `/items`                                 | Fetch all available products                            |
+| POST   | `/carts`                                 | Create a new cart                                       |
+| GET    | `/carts/:id`                             | Fetch a specific cart                                   |
+| POST   | `/carts/:cart_id/cart_items`             | Add item to cart                                        |
+| PUT    | `/cart_items`                            | Update item quantity (requires `cart_id`, `code`, `quantity`) |
+| DELETE | `/cart_items`                            | Remove item from cart (requires `cart_id`, `code`)      |
+| DELETE | `/carts/:id/clear`                       | Remove all items from the cart                          |
+| POST   | `/carts/:id/checkout`                    | Checkout the cart and return the final total            |
