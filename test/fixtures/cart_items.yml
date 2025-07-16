@@ -1,15 +1,9 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  cart: MyString
-  references: MyString
-  item: one
-  quantity: MyString
-  integer: MyString
+  cart: cart_one
+  item: item_one
+  quantity: 2
 
 two:
-  cart: MyString
-  references: MyString
-  item: two
-  quantity: MyString
-  integer: MyString
+  cart: cart_one
+  item: item_two
+  quantity: 1
