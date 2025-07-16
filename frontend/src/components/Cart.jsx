@@ -22,7 +22,6 @@ const Cart = () => {
                 setItems(itemsResponse.data);
                 setCart(cartResponse.data);
 
-
             } catch (error) {
                 console.error("Failed to fetch items", error);
             } finally {
@@ -147,7 +146,7 @@ const Cart = () => {
                         ))}
 
                             <li className="list-group-item d-flex justify-content-between align-items-center">
-                                Total <h5>€{cart.total}</h5>
+                                Total <h5>€{parseFloat(cart.total).toFixed(2)}</h5>
                             </li>
                         </ul>
 

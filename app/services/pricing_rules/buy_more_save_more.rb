@@ -13,14 +13,11 @@ class BuyMoreSaveMore
         quantity = cart_item.quantity.to_i
         price = cart_item.item.price
 
-        total = if quantity >= @threshold
-          quantity * (price * @discount_ratio)
+        if quantity >= @threshold
+          subtotal = quantity * (price * @discount_ratio)
+          [ subtotal, "Buy More Save More applied, promo price €#{(@discount_ratio * price).round(2)}" ]
         else
-          quantity * price
+          [ quantity * price, nil ]
         end
-        total
-    end
-    def description(cart_item)
-      "Buy More Save More applied to #{cart_item.item.name}"
     end
 end

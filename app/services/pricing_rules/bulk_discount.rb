@@ -10,16 +10,13 @@ class BulkDiscount
 
     def calculate(cart_item)
         quantity = cart_item.quantity.to_i
-        price = cart_item.item.price
+        price = cart_item.item.price.to_i
 
-        total = if quantity >= @threshold
-          quantity * @new_price
+        if quantity >= @threshold
+          subtotal = quantity * @new_price
+          [ subtotal, "Bulk discount applied, promo price €#{format('%.2f', @new_price)}" ]
         else
-          quantity * price
+          [ quantity * price, nil ]
         end
-        total
-    end
-    def description(cart_item)
-      "Bulk Discount applied to #{cart_item.item.name}"
     end
 end

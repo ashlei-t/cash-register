@@ -3,7 +3,7 @@ require_relative "./pricing_rules/buy_more_save_more"
 require_relative "./pricing_rules/buy_one_get_one_free"
 
 class CartPriceCalculator
-  attr_reader :applied_rules
+  attr_reader :items, :total
 
   def initialize(cart)
     @cart = cart
@@ -15,33 +15,41 @@ class CartPriceCalculator
       # BuyMoreSaveMore expects: code, threshold, discount_ratio
       BuyMoreSaveMore.new("CF1", 3, 2.0/3)
     ]
-    @applied_rules = []
+    @items = []
+    @total = 0
+    calculate!
   end
 
-  def total
-    total = 0
-
+  def calculate!
     cart_items = @cart.cart_items.includes(:item)
 
     cart_items.each do |cart_item|
-      rule = @rules.find { |r| r.applies_to?(cart_item) }
-
       quantity = cart_item.quantity.to_i
+      price = cart_item.item.price.to_i
       code = cart_item.item.code
-      price = cart_item.item.price
+      rule = @rules.find { |r| r.applies_to?(cart_item) }
 
       puts "DEBUG: #{code} x #{quantity} at #{price} each, #{rule}"
 
-      item_total = if rule
-        @applied_rules << rule.description(cart_item)
-        rule.calculate(cart_item)
+      if rule
+        subtotal, description = rule.calculate(cart_item)
       else
-        cart_item.quantity.to_i * cart_item.item.price
+        subtotal = quantity * price
+        description = nil
       end
 
-      total += item_total
+      @total += subtotal
+
+      @items << {
+        code: cart_item.item.code,
+        name: cart_item.item.name,
+        quantity: quantity,
+        original_price: price,
+        subtotal: subtotal.round(2),
+        discount_applied: description
+      }
     end
 
-    total.round(2)
+    @total = @total.round(2)
   end
 end

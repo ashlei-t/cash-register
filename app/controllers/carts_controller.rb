@@ -1,6 +1,4 @@
 class CartsController < ApplicationController
-  attr_reader :applied_rules
-
   def create
     cart = Cart.create
     render json: cart, status: :created
@@ -8,26 +6,17 @@ class CartsController < ApplicationController
 
   def show
     cart = Cart.find(params[:id])
-    cart_items = cart.cart_items.includes(:item)
+    # use find by (& add rescue)
+    calculator = CartPriceCalculator.new(cart)
 
-    result = cart_items.map do |ci|
+    render json:
       {
-        code: ci.item.code,
-        name: ci.item.name,
-        quantity: ci.quantity,
-        price: ci.item.price
+        cart_id: cart.id,
+        items: calculator.items,
+        subtotal: calculator,
+        discounts: calculator.items.map { |i| i[:discount_applied] }.compact.uniq,
+        total: calculator.total
       }
-    end
-
-    price_calc = CartPriceCalculator.new(cart)
-    total = price_calc.total
-
-    render json: {
-      cart_id: cart.id,
-      items: result,
-      total: total,
-      applied_rules: price_calc.applied_rules
-    }
   end
 
   def checkout
@@ -39,15 +28,15 @@ class CartsController < ApplicationController
         code: ci.item.code,
         name: ci.item.name,
         quantity: ci.quantity,
-        price: ci.item.price
+        price: ci.item.price.to_i
       }
     end
 
     render json: {
       cart_id: cart.id,
       items: result,
-      total: CartPriceCalculator.new(cart).total,
-      message: "Checkout successful"
+      total: CartPriceCalculator.new(cart).total
+
     }
   end
 
