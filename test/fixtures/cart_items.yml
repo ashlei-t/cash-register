@@ -4,6 +4,6 @@ one:
   quantity: 2
 
 two:
-  cart: cart_one
+  cart: cart_two
   item: item_two
   quantity: 1
