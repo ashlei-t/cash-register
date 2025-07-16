@@ -34,7 +34,7 @@ The application includes a seed file that populates the database with sample pro
 
 ### Backend
 
-From the backend directory:
+From the project directory:
 ```bash
 rails server -p 3001
 ```
@@ -44,6 +44,7 @@ The backend will run on [http://localhost:3001](http://localhost:3001)
 
 From the frontend directory:
 ```bash
+cd frontend
 npm start
 ```
 The frontend will run on [http://localhost:3000](http://localhost:3000)
