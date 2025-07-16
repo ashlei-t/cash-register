@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import App from './App';
 
-test('renders learn react link', () => {
+test('header is present', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/Coffee House!/i);
   expect(linkElement).toBeInTheDocument();
 });
