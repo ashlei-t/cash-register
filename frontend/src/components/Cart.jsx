@@ -20,11 +20,9 @@ const Cart = () => {
                 ])
 
                 setItems(itemsResponse.data);
-                console.log(itemsResponse.data);
                 setCart(cartResponse.data);
 
-                console.log("updated cart", cart);
-                console.log("items", items);
+
             } catch (error) {
                 console.error("Failed to fetch items", error);
             } finally {
@@ -57,8 +55,6 @@ const Cart = () => {
         const currentQty = getCurrentQty(item.code);
         const newQty = currentQty + 1;
 
-        console.log("Adding to Cart:", cartId, item.code, newQty)
-
         try {
             if (currentQty === 0) {
                 await addItemToCart(cartId, item.code, newQty);
@@ -80,8 +76,6 @@ const Cart = () => {
         if (currentQty === 0) return;
 
         const newQty = currentQty - 1 ;
-
-        console.log("Removing from Cart:", cartId, item.code, newQty);
 
         try {
             if (newQty === 0) {
