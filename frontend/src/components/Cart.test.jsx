@@ -42,13 +42,6 @@ const mockCartWithItems = {
   total: 3.11
 };
 
-const mockCartWithOneItem = {
-  items: [
-    { id: 2, code: 'GR1', name: 'Green Tea', price: 3.11, quantity: 1 }
-  ],
-  total: 3.11
-};
-
 describe('Cart Component', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -132,8 +125,11 @@ describe('Cart Component', () => {
 
       await waitFor(() => {
         expect(api.addItemToCart).toHaveBeenCalledWith(123, 'GR1', 1);
-        expect(api.fetchCart).toHaveBeenCalledTimes(2); // Initial + after add
       });
+      await waitFor(() => {
+        expect(api.fetchCart).toHaveBeenCalledTimes(2);
+      });
+
     });
 
     test('calls updateCartItem when adding item with existing quantity', async () => {

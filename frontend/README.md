@@ -43,7 +43,7 @@ The backend will run on [http://localhost:3001](http://localhost:3001)
 ### Frontend
 
 From the frontend directory:
-```bash
+``` bash
 npm start
 ```
 The frontend will run on [http://localhost:3000](http://localhost:3000)
@@ -74,7 +74,7 @@ Runs the test suite for pricing rules and other backend functionality.
 
 ## API Endpoints
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint                                | Description                                             |
 |--------|------------------------------------------|---------------------------------------------------------|
