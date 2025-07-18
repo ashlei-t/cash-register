@@ -5,31 +5,21 @@ This cash register application adds products to a cart and computes the total pr
 ## Prerequisites
 
 - Node.js: version 14 or higher (tested with 16+)
-- Ruby: version 2.7 or higher
+- Ruby: version 3.2.2 or higher
 - Rails: version 6.1 or higher
 
 ## Installation
 
-1. Clone the repository:
-
-```bash
-   git clone https://github.com/ashlei-t/cash-register.git
-   cd cash-register
-```
-
-2. Install backend dependencies:
-
+1. Install backend dependencies:
    ```bash
    bundle install
    rails db:create db:migrate db:seed
    ```
-
 The application includes a seed file that populates the database with sample products and pricing rules.
 
 3. Install frontend dependencies:
-
    ```bash
-   cd frontend
+   cd frontend/
    npm install
    ```
 
@@ -37,42 +27,36 @@ The application includes a seed file that populates the database with sample pro
 
 ### Backend
 
-From the project root directory:
-
+From the project directory:
 ```bash
 rails server -p 3001
 ```
-
 The backend will run on [http://localhost:3001](http://localhost:3001)
 
 ### Frontend
 
 From the frontend directory:
-
-``` bash
+```bash
+cd frontend
 npm start
 ```
-
 The frontend will run on [http://localhost:3000](http://localhost:3000)
 
 ## Testing
 
 ### Frontend Tests
-
 ```bash
 cd frontend
 npm test
 ```
-
 Launches the test runner in interactive watch mode.
 
 ### Backend Tests
-
 ```bash
 rspec
 ```
-
 Runs the test suite for pricing rules and other backend functionality.
+
 
 ## Features
 
@@ -80,6 +64,8 @@ Runs the test suite for pricing rules and other backend functionality.
 - Apply quantity-based pricing rules
 - Calculate total price with discounts
 - Real-time cart updates
+
+## API Endpoints
 
 ## API Endpoints
 

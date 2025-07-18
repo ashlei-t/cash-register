@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Home = () => {
     const navigate = useNavigate();
-    const [setCartId] = useState();
+    const [ ,setCartId] = useState();
 
     const handleStart = async () => {
         try {

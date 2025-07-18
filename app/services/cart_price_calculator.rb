@@ -9,11 +9,11 @@ class CartPriceCalculator
     @cart = cart
     @rules = [
       # BuyOneGetOneFree expects: code
-      BuyOneGetOneFree.new("GR1"),
+      PricingRules::BuyOneGetOneFree.new("GR1"),
       # BulkDiscount expects: code, threshold, new_price
-      BulkDiscount.new("SR1", 3, 4.50),
+      PricingRules::BulkDiscount.new("SR1", 3, 4.50),
       # BuyMoreSaveMore expects: code, threshold, discount_ratio
-      BuyMoreSaveMore.new("CF1", 3, 2.0/3)
+      PricingRules::BuyMoreSaveMore.new("CF1", 3, 2.0/3)
     ]
     @items = []
     @total = 0
