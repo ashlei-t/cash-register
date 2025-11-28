@@ -5,6 +5,7 @@ A modern cash register application for managing shopping carts with automatic di
 ## 🎯 Overview
 
 This application allows customers to:
+
 - Browse available products (Coffee, Green Tea, Strawberries)
 - Add items to a shopping cart
 - Automatically apply quantity-based pricing rules and discounts
@@ -13,11 +14,13 @@ This application allows customers to:
 ## 🛠️ Tech Stack
 
 **Backend:**
+
 - Ruby on Rails 8.0.2
 - SQLite3 database
 - RESTful API architecture
 
 **Frontend:**
+
 - React 19.1.0
 - React Router 7.6.3
 - Axios for API calls
@@ -36,12 +39,14 @@ Before you begin, ensure you have the following installed:
 ## 🚀 Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/ashlei-t/cash-register.git
    cd cash-register
    ```
 
 2. **Install backend dependencies:**
+
    ```bash
    bundle install
    rails db:create db:migrate db:seed
@@ -55,6 +60,7 @@ Before you begin, ensure you have the following installed:
    - **CF1** - Coffee (€11.23)
 
 3. **Install frontend dependencies:**
+
    ```bash
    cd frontend
    npm install
@@ -65,6 +71,7 @@ Before you begin, ensure you have the following installed:
 ### Backend Server
 
 From the project root directory:
+
 ```bash
 rails server -p 3001
 ```
@@ -74,6 +81,7 @@ The backend API will be available at [http://localhost:3001](http://localhost:30
 ### Frontend Server
 
 From the frontend directory (or project root):
+
 ```bash
 cd frontend
 npm start
@@ -86,16 +94,20 @@ The frontend will automatically open at [http://localhost:3000](http://localhost
 ## 🧪 Testing
 
 ### Frontend Tests
+
 ```bash
 cd frontend
 npm test
 ```
+
 Launches the test runner in interactive watch mode.
 
 ### Backend Tests
+
 ```bash
 rspec
 ```
+
 Runs the test suite for pricing rules and other backend functionality.
 
 ## ✨ Features
@@ -112,16 +124,19 @@ Runs the test suite for pricing rules and other backend functionality.
 The application automatically applies the following pricing rules:
 
 ### 1. Buy One Get One Free (BOGOF)
+
 - **Product:** Green Tea (GR1)
 - **Rule:** Buy 1, Get 1 Free
 - **Example:** 2 Green Teas = Pay for 1 (€3.11), 3 Green Teas = Pay for 2 (€6.22)
 
 ### 2. Bulk Discount
+
 - **Product:** Strawberries (SR1)
 - **Rule:** Buy 3 or more, price drops to €4.50 each
 - **Example:** 3 Strawberries = €13.50 (instead of €15.00)
 
 ### 3. Buy More Save More
+
 - **Product:** Coffee (CF1)
 - **Rule:** Buy 3 or more, get 33% off (pay 2/3 of original price)
 - **Example:** 3 Coffee = €22.47 (instead of €33.69)
@@ -142,6 +157,7 @@ The application automatically applies the following pricing rules:
 ### Example API Request
 
 **Add item to cart:**
+
 ```bash
 POST /carts/1/cart_items
 Content-Type: application/json
@@ -154,7 +170,7 @@ Content-Type: application/json
 
 ## 📁 Project Structure
 
-```
+```md
 cash-register/
 ├── app/
 │   ├── controllers/          # API endpoints
