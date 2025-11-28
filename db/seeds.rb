@@ -1,6 +1,17 @@
-Item.create(code: "CF1", name: "Coffee", price: 11.23)
-Item.create(code: "GR1", name: "Green Tea", price: 3.11)
-Item.create(code: "SR1", name: "Strawberries", price: 5.00)
+Item.find_or_create_by!(code: "CF1") do |item|
+  item.name = "Coffee"
+  item.price = 11.23
+end
+
+Item.find_or_create_by!(code: "GR1") do |item|
+  item.name = "Green Tea"
+  item.price = 3.11
+end
+
+Item.find_or_create_by!(code: "SR1") do |item|
+  item.name = "Strawberries"
+  item.price = 5.00
+end
 
 
 # This file should ensure the existence of records required to run the application in every environment (production,
