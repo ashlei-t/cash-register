@@ -26,7 +26,7 @@ This application allows customers to:
 - Axios for API calls
 - Bootstrap 5.3.7 for styling
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
