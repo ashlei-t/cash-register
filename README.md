@@ -2,7 +2,7 @@
 
 A modern cash register application for managing shopping carts with automatic discount pricing rules. Built with a Ruby on Rails API backend and a React frontend.
 
-## 🎯 Overview
+## Overview
 
 This application allows customers to:
 
@@ -11,7 +11,7 @@ This application allows customers to:
 - Automatically apply quantity-based pricing rules and discounts
 - View real-time cart totals with discount calculations
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Backend:**
 
@@ -36,7 +36,7 @@ Before you begin, ensure you have the following installed:
 - **Bundler**: `gem install bundler`
 - **npm**: Comes with Node.js
 
-## 🚀 Installation
+## Installation
 
 1. **Clone the repository:**
 
@@ -66,7 +66,7 @@ Before you begin, ensure you have the following installed:
    npm install
    ```
 
-## ▶️ Running the Application
+## Running the Application
 
 ### Backend Server
 
@@ -91,7 +91,7 @@ The frontend will automatically open at [http://localhost:3000](http://localhost
 
 > **Note:** Both servers need to be running simultaneously for the application to work properly.
 
-## 🧪 Testing
+## Testing
 
 ### Frontend Tests
 
@@ -110,16 +110,16 @@ rspec
 
 Runs the test suite for pricing rules and other backend functionality.
 
-## ✨ Features
+## Features
 
-- ✅ Add and remove products from cart
-- ✅ Real-time quantity updates
-- ✅ Automatic discount calculation based on pricing rules
-- ✅ Visual discount indicators
-- ✅ Cart summary with itemized totals
-- ✅ Checkout functionality
+- Add and remove products from cart
+- Real-time quantity updates
+- Automatic discount calculation based on pricing rules
+- Visual discount indicators
+- Cart summary with itemized totals
+- Checkout functionality
 
-## 💰 Pricing Rules
+## Pricing Rules
 
 The application automatically applies the following pricing rules:
 
@@ -141,7 +141,7 @@ The application automatically applies the following pricing rules:
 - **Rule:** Buy 3 or more, get 33% off (pay 2/3 of original price)
 - **Example:** 3 Coffee = €22.47 (instead of €33.69)
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint                                | Description                                             |
 |--------|------------------------------------------|---------------------------------------------------------|
@@ -186,11 +186,3 @@ cash-register/
 └── config/
     └── routes.rb            # API routes
 ```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
